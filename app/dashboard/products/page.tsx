@@ -26,6 +26,7 @@ import { MoreHorizontal, PlusCircle, UserIcon } from "lucide-react";
 import Link from "next/link";
 import { PrismaClient } from "@prisma/client";
 import Image from "next/image";
+import {unstable_noStore as noStore} from 'next/cache'
 
 const prisma = new PrismaClient();
 
@@ -39,6 +40,7 @@ async function getData() {
 }
 
 export default async function ProductsRoute() {
+  noStore()
   const data = await getData();
   return (
     <>

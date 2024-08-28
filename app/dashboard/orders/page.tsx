@@ -14,6 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {unstable_noStore as noStore} from 'next/cache'
 
 async function getDate() {
   const data = await prisma.order.findMany({
@@ -38,6 +39,7 @@ async function getDate() {
 }
 
 export default async function OrdersPage() {
+  noStore();
   const data = await getDate();
   return (
     <Card>
